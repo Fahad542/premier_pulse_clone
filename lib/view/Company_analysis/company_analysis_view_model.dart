@@ -64,14 +64,7 @@ class CompanyHeirarchyViewModel with ChangeNotifier {
                                       style: TextStyle(
                                           fontSize: 14, color: Colors.green[800]),
                                     ),
-                                    Text(
-                                      'Booked: ${item.Booked}',
-                                      style: TextStyle(
-                                          fontSize: 14, color: Colors.green[800]),
-                                    ),
-                                    Text('Execution: ${item.Execution ?? ''}',
-                                        style: TextStyle(
-                                            fontSize: 14, color: Colors.green[800])),
+
                                   ],
                                 ),
                               ],
@@ -174,20 +167,7 @@ void showchannelDetailsDialog(BuildContext context, List<get_channels_model> tea
                                       color: Colors.green[800],
                                     ),
                                   ),
-                                  Text(
-                                    'Booked: ${item.Booked}',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.green[800],
-                                    ),
-                                  ),
-                                  Text(
-                                    'Execution: ${item.Execution ?? ''}',
-                                    style: TextStyle(
-                                      fontSize: 14,
-                                      color: Colors.green[800],
-                                    ),
-                                  ),
+
                                 ],
                               ),
                             ],

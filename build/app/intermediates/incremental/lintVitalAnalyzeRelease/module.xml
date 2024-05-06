@@ -1,11 +1,11 @@
 <lint-module
     format="1"
-    dir="E:\Fahad\premier_pulse\android\app"
+    dir="E:\Fahad\premier_pulse_clone\android\app"
     name=":app"
     type="APP"
     maven="android:app:"
     gradle="7.1.2"
-    buildFolder="E:\Fahad\premier_pulse\build\app"
+    buildFolder="E:\Fahad\premier_pulse_clone\build\app"
     bootClassPath="C:\Users\Fahad Shafiq\AppData\Local\Android\sdk\platforms\android-33\android.jar;C:\Users\Fahad Shafiq\AppData\Local\Android\sdk\build-tools\30.0.3\core-lambda-stubs.jar"
     javaSourceLevel="1.8"
     compileTarget="android-33">

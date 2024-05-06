@@ -461,14 +461,14 @@ class _CustomerWiseState extends State<Company_Product> {
 
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:""),
+          child: ProductItem(  item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:""),
         ),
 
       if (ischeck==true)
 
         Padding(
           padding: const EdgeInsets.all(8.0),
-          child: ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:""),
+          child: ProductItem(   item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:""),
         ),
 
     ],

@@ -1,13 +1,13 @@
 <libraries>
   <library
-      name="__local_aars__:E:\Fahad\premier_pulse\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
-      jars="E:\Fahad\premier_pulse\build\app\intermediates\flutter\release\libs.jar"
-      resolved="__local_aars__:E:\Fahad\premier_pulse\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
+      name="__local_aars__:E:\Fahad\premier_pulse_clone\build\app\intermediates\flutter\release\libs.jar:unspecified@jar"
+      jars="E:\Fahad\premier_pulse_clone\build\app\intermediates\flutter\release\libs.jar"
+      resolved="__local_aars__:E:\Fahad\premier_pulse_clone\build\app\intermediates\flutter\release\libs.jar:unspecified"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:shared_preferences_android::release"
-      jars="E:\Fahad\premier_pulse\build\shared_preferences_android\.transforms\4ceda1a8133586fa1d1b3ce64024f4d5\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:shared_preferences_android::release"
+      jars="E:\Fahad\premier_pulse_clone\build\shared_preferences_android\.transforms\c02fa530039cbd40f1459c777d631335\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.sharedpreferences:shared_preferences_android:unspecified"
-      folder="E:\Fahad\premier_pulse\build\shared_preferences_android\.transforms\4ceda1a8133586fa1d1b3ce64024f4d5\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\shared_preferences_android\.transforms\c02fa530039cbd40f1459c777d631335\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -17,10 +17,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:geolocator_android::release"
-      jars="E:\Fahad\premier_pulse\build\geolocator_android\.transforms\890a705dbbcd48524ea77f4ccaf29414\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:geolocator_android::release"
+      jars="E:\Fahad\premier_pulse_clone\build\geolocator_android\.transforms\993ae55b1e770924b71164ccd411f007\transformed\out\jars\classes.jar"
       resolved="com.baseflow.geolocator:geolocator_android:unspecified"
-      folder="E:\Fahad\premier_pulse\build\geolocator_android\.transforms\890a705dbbcd48524ea77f4ccaf29414\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\geolocator_android\.transforms\993ae55b1e770924b71164ccd411f007\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -30,10 +30,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:connectivity::release"
-      jars="E:\Fahad\premier_pulse\build\connectivity\.transforms\c0c0ecc3307dfd6d48aeccf33bd783c3\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:connectivity::release"
+      jars="E:\Fahad\premier_pulse_clone\build\connectivity\.transforms\d4edbf2f243a9aefcd5b19c013bed5e2\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.connectivity:connectivity:unspecified"
-      folder="E:\Fahad\premier_pulse\build\connectivity\.transforms\c0c0ecc3307dfd6d48aeccf33bd783c3\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\connectivity\.transforms\d4edbf2f243a9aefcd5b19c013bed5e2\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -43,10 +43,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:sqflite::release"
-      jars="E:\Fahad\premier_pulse\build\sqflite\.transforms\242c4aa852932d63a578a8302be28f62\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:sqflite::release"
+      jars="E:\Fahad\premier_pulse_clone\build\sqflite\.transforms\549ab23ad3816ab614c302d699ebe13e\transformed\out\jars\classes.jar"
       resolved="com.tekartik.sqflite:sqflite:unspecified"
-      folder="E:\Fahad\premier_pulse\build\sqflite\.transforms\242c4aa852932d63a578a8302be28f62\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\sqflite\.transforms\549ab23ad3816ab614c302d699ebe13e\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -56,10 +56,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:fluttertoast::release"
-      jars="E:\Fahad\premier_pulse\build\fluttertoast\.transforms\6ad0a2630c1d39b43b899d3eb9bcc4e2\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:fluttertoast::release"
+      jars="E:\Fahad\premier_pulse_clone\build\fluttertoast\.transforms\b71c4c796d59fef5429c0a1fb2991e50\transformed\out\jars\classes.jar"
       resolved="com.example.FlutterToast:fluttertoast:unspecified"
-      folder="E:\Fahad\premier_pulse\build\fluttertoast\.transforms\6ad0a2630c1d39b43b899d3eb9bcc4e2\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\fluttertoast\.transforms\b71c4c796d59fef5429c0a1fb2991e50\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -69,10 +69,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:url_launcher_android::release"
-      jars="E:\Fahad\premier_pulse\build\url_launcher_android\.transforms\df701f2889e4668e027d5c92a7b84707\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:url_launcher_android::release"
+      jars="E:\Fahad\premier_pulse_clone\build\url_launcher_android\.transforms\c0a1f6876b1870cc88e030a21bef4579\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.urllauncher:url_launcher_android:unspecified"
-      folder="E:\Fahad\premier_pulse\build\url_launcher_android\.transforms\df701f2889e4668e027d5c92a7b84707\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\url_launcher_android\.transforms\c0a1f6876b1870cc88e030a21bef4579\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -82,10 +82,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:path_provider_android::release"
-      jars="E:\Fahad\premier_pulse\build\path_provider_android\.transforms\55b93db3f9e75dbbc950180f971041f9\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:path_provider_android::release"
+      jars="E:\Fahad\premier_pulse_clone\build\path_provider_android\.transforms\f102dfab0fa22104709b403ec72ff2db\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.pathprovider:path_provider_android:unspecified"
-      folder="E:\Fahad\premier_pulse\build\path_provider_android\.transforms\55b93db3f9e75dbbc950180f971041f9\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\path_provider_android\.transforms\f102dfab0fa22104709b403ec72ff2db\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -95,10 +95,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:share::release"
-      jars="E:\Fahad\premier_pulse\build\share\.transforms\2553d14ddf279e9b394621c8d654f2e9\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:share::release"
+      jars="E:\Fahad\premier_pulse_clone\build\share\.transforms\a90061e14a9a0fa26361d0c8e96bf8d7\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.share:share:unspecified"
-      folder="E:\Fahad\premier_pulse\build\share\.transforms\2553d14ddf279e9b394621c8d654f2e9\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\share\.transforms\a90061e14a9a0fa26361d0c8e96bf8d7\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"
@@ -108,10 +108,10 @@
       externalAnnotations="annotations.zip"
       proguardRules="proguard.txt"/>
   <library
-      name="E:\Fahad\premier_pulse\android@@:package_info::release"
-      jars="E:\Fahad\premier_pulse\build\package_info\.transforms\bec63f3813eb035c6adcaf5a9af6f700\transformed\out\jars\classes.jar"
+      name="E:\Fahad\premier_pulse_clone\android@@:package_info::release"
+      jars="E:\Fahad\premier_pulse_clone\build\package_info\.transforms\4251b65227e4dc5e9697e8f31c6d8206\transformed\out\jars\classes.jar"
       resolved="io.flutter.plugins.packageinfo:package_info:unspecified"
-      folder="E:\Fahad\premier_pulse\build\package_info\.transforms\bec63f3813eb035c6adcaf5a9af6f700\transformed\out"
+      folder="E:\Fahad\premier_pulse_clone\build\package_info\.transforms\4251b65227e4dc5e9697e8f31c6d8206\transformed\out"
       manifest="AndroidManifest.xml"
       resFolder="res"
       assetsFolder="assets"

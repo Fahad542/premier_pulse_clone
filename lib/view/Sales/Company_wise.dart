@@ -310,7 +310,7 @@ double totalSales=0;
 
                                     },
                                     child:
-                                    ProductItem(item: companyData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
+                                    ProductItem(   empcheck: true,item: companyData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
 
                                     ),
 
@@ -343,7 +343,9 @@ double totalSales=0;
 
                                     },
                                     child:
-                                    ProductItem(item: companyData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
+                                    ProductItem(
+                                      empcheck: true,
+                                      item: companyData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
 
                                     ),
 

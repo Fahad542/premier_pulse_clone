@@ -16,6 +16,7 @@ import '../../model/heirarchy_model.dart';
 import '../../model/sales_model.dart';
 import '../../res/color.dart';
 import '../../res/components/round_button.dart';
+import '../../respository/measure_repository.dart';
 import '../../utils/Drawer.dart';
 import '../../utils/customs_widgets/dsf_measure_popup.dart';
 import '../../utils/customs_widgets/list_filters.dart';
@@ -78,14 +79,15 @@ class _SalesReportState extends State<SalesReport> {
   @override
   void initState() {
 
-
+    final repository = measure_repository();
+    repository.fetchDataAndSave();
     salesViewModel.refreshSelectedToAddbranch();
     super.initState();
     String nonNullableData = widget.data ?? reporting;
     _loadUserDetails(nonNullableData,'1');
 
     teamcompany();
-   branchcompany();
+    branchcompany();
 
   }
 
@@ -423,35 +425,35 @@ String total='0';
                       value: isChecked,
                       onChanged: (value) {
                         setState(() {
-                          checkboxStates[id] = value!;
+                          // Only allow checking if the checkbox is currently unchecked
                           if (value!) {
+                            // Uncheck all other checkboxes in the list
+                            checkboxStates.updateAll((key, _) => false);
+                            // Check the current checkbox
+                            checkboxStates[id] = true;
+
+                            // Update selectedIds to contain only the ID of the current checkbox
+                            selectedIds = [id].toSet();
+
+
+                            // Perform any other actions needed when a checkbox is checked
                             if (name.trim() == 'Utagged') {
-                              //selectedIds ={''};
                               untagged = ["All"];
-                            }
-                            else if (name.trim() != 'Utagged') {
-                              selectedIds.add(id);
+                            } else {
                               untagged.clear();
                             }
                             print(name);
                           } else {
+                            // Allow unchecking the checkbox
+                            checkboxStates[id] = false;
                             selectedIds.remove(id);
                           }
 
-                          bool atLeastOneChecked =
-                          checkboxStates.values.any((value) => value == true);
+                          // Update the 'done' flag based on checkbox states
+                          done = checkboxStates.containsValue(true);
 
-                          bool allValuesUnchecked = checkboxStates.values
-                              .every((value) => value == false);
-
-                          done = atLeastOneChecked;
-
-                          if (allValuesUnchecked) {
-                            done = false;
-                          }
-
-                          isCheckboxSelected =
-                              checkboxStates.containsValue(true);
+                          // Update the 'isCheckboxSelected' flag
+                          isCheckboxSelected = checkboxStates.containsValue(true);
                         });
                       },
                       activeColor: AppColors.greencolor,
@@ -459,6 +461,7 @@ String total='0';
                       hoverColor: Colors.yellow,
                       materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
                     ),
+
                   ),
                 ],
               ),
@@ -493,6 +496,7 @@ String total='0';
 
             Column(
               children: [
+
 
                 if(salesData['Sales_Inc_ST']!=null && ischeck==false)
                 Padding
@@ -612,8 +616,11 @@ String total='0';
                               child: Column(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
+
+
                                   //if(salesData['EmpDesignation']=="DSF")
                                     ProductItem(
+                                      empcheck: true,
                                       item: salesData,
                                       selectedmeasures: selectedmeasures,
                                       index: index,
@@ -757,6 +764,7 @@ String total='0';
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
                                       ProductItem(
+                                        empcheck: true,
                                         item: salesData,
                                         selectedmeasures: selectedmeasures,
                                         index: index,
@@ -984,7 +992,7 @@ String total='0';
                             child: Icon(Icons.calendar_today, color: Colors.white, size: 18),
                           ),
                           SizedBox(width: 6),
-                          Text(showDateContainers ? 'Dates off' : 'Dates', style: TextStyle(fontSize: 14)),
+                          Text(showDateContainers ? 'Dates Hide' : 'Dates Show', style: TextStyle(fontSize: 14)),
                         ],
                       ),
                       value: 'date',
@@ -1098,23 +1106,38 @@ String total='0';
                   }
 
                   if (value == 'share') {
-                    // Combine the information into a single text message
-                    String combinedMessage = ''; // Initialize the combined message outside the loop
+                    String combinedMessage = '';
+
+                    combinedMessage += "Start Date: $formattedFirstDay\nEnd Date: $formattedLastDay\n\n";
 
                     for (int i = 0; i < apiResponseList.length; i++) {
-                      if (apiResponseList[i].empCodes.isNotEmpty) {
-                        name = apiResponseList[i].name;
-                        id = apiResponseList[i].empCodes.toString();
+                      if (apiResponseList[i]['EmpCode'].isNotEmpty) {
+                        String name = apiResponseList[i]['EmpName'];
+                        String id = apiResponseList[i]['EmpCode'].toString();
 
-                        sale = apiResponseList[i].sales.toString();
+                        String sale = NumberFormat('#,###').format(double.parse(apiResponseList[i]['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0'));
+                        sale = sale.isEmpty ? '0' : sale;
 
-                        sale.isEmpty ? '0' : sale;
-                        combinedMessage +=
-                        "Start Date: $formattedFirstDay\nEnd Date: $formattedLastDay\nName: $name\nID: $id\nSale: $sale\n\n";
+                        String measure = ''; // Reset measure for each iteration
+
+                        measure += List.generate(
+                          selectedmeasures.length,
+                              (index) {
+                            final measure = selectedmeasures[index];
+                            final teamValue = apiResponseList[i][measure.toString().replaceAll(' ', '_')];
+                            final formattedValue = teamValue != null ? (measure.endsWith('%') ? teamValue.toString() : formatter.format(teamValue).toString()) : '0';
+                            return "$measure: $formattedValue";
+                          },
+                        ).join('\n');
+
+                        combinedMessage += "Name: $name\nID: $id\nSale: $sale\n$measure\n\n";
                       }
                     }
+
                     Share.share(combinedMessage, subject: 'Sales Information');
                   }
+
+
                   if (value == 'date') {
                     setState(() {
                       done = !done;
@@ -1362,20 +1385,30 @@ String total='0';
             ),
             child:   Padding(
               padding: const EdgeInsets.all(10.0),
-              child:   Row(
-
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+              child:   Column(
                 children: [
-                  //SizedBox(width: 10,),
-                   Text("Name",style: TextStyle(color: AppColors.greencolor, fontSize: 16, fontWeight: FontWeight.bold ),),
-                  Text("Sales",  style: TextStyle(color:AppColors.greencolor, fontSize: 16, fontWeight: FontWeight.bold ),),
+                  Row(
+
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: [
+                      //SizedBox(width: 10,),
+                       Text("Name",style: TextStyle(color: AppColors.greencolor, fontSize: 16, fontWeight: FontWeight.bold ),),
+                      Text("Sales",  style: TextStyle(color:AppColors.greencolor, fontSize: 16, fontWeight: FontWeight.bold ),),
 
 
-                ],),
+
+                    ],),
+
+                ],
+              ),
+
 
             ),
           ),
+
+
+
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 10),
             child:
@@ -1425,6 +1458,22 @@ String total='0';
               ],
             ),
           ),
+          if(showsales)
+            Padding(
+              padding: const EdgeInsets.all(8),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text("Start Date: ${startDate.toString().split(' ')[0]} ", style: TextStyle(color: AppColors.greencolor,fontWeight: FontWeight.bold),), // Display only the date part
+                  Text("End Date: ${endDate.toString().split(' ')[0]}", style: TextStyle(color: AppColors.greencolor,fontWeight: FontWeight.bold)), // Display only the date part
+                ],
+              ),
+            ),
+          if(showsales)
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 10),
+              child: Divider(color: Colors.green[800],),
+            )   ,
           Expanded(
 
             child: ListView(

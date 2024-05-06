@@ -380,7 +380,7 @@ Container(
                                         );
                                   },
                                   child:
-                                      ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Customer_Cust_Name',code:"Customer_BRCUST",
+                                      ProductItem(   empcheck: true,item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Customer_Cust_Name',code:"Customer_BRCUST",
                                         lat: customerData['Customer_Cust_Latt'],
                                         check: true,
                                         long: customerData['Customer_Cust_Long'],
@@ -415,7 +415,7 @@ Container(
                                     );
                                   },
                                   child:
-                                  ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Customer_Cust_Name',code:"Customer_BRCUST",
+                                  ProductItem(    empcheck: true,item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Customer_Cust_Name',code:"Customer_BRCUST",
                                     lat: customerData['Customer_Cust_Latt'],
                                     check: true,
                                     long: customerData['Customer_Cust_Long'],

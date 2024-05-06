@@ -317,7 +317,7 @@ print("storedate$storedate");
             );
           },
           child:
-          ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
+          ProductItem(   empcheck: true,item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
 
           ),
 
@@ -349,7 +349,7 @@ print("storedate$storedate");
               );
             },
             child:
-            ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
+            ProductItem(    empcheck: true,item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Company_Name',code:"Product_Company_ID",
 
             ),
 

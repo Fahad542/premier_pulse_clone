@@ -10,6 +10,7 @@ import 'package:mvvm/respository/get_branches_repositiory.dart';
 import 'package:mvvm/respository/sku_repository.dart';
 import 'package:mvvm/respository/sub_category_repository.dart';
 import 'package:mvvm/respository/team_company.dart';
+import 'package:mvvm/utils/app_colors.dart';
 import 'package:mvvm/utils/customs_widgets/calculated_sale.dart';
 import 'package:mvvm/utils/utils.dart';
 import 'package:mvvm/view/login_view.dart';
@@ -41,6 +42,8 @@ class company_analysis extends StatefulWidget {
 class _company_analysisState extends State<company_analysis> {
   var team;
   var division;
+  var filterlist;
+
   List<get_bracnhes_model> branches = [];
   List<get_channels_model> channel = [];
   var skumodel = [];
@@ -108,6 +111,8 @@ class _company_analysisState extends State<company_analysis> {
 
         totalcompany=0;
         team = result;
+        filterlist=team;
+
         isLoading=false;
         print("team$team");
         company = true;
@@ -162,6 +167,7 @@ class _company_analysisState extends State<company_analysis> {
 
           totalcompany=0;
           team = result;
+          filterlist=team;
           isLoading=false;
           company = true;
           showDateContainers = true;
@@ -627,6 +633,20 @@ class _company_analysisState extends State<company_analysis> {
 
   }
 
+  ////search
+  String searchQuery = '';
+  void filterList(String query) {
+    setState(() {
+      searchQuery = query;
+      filterlist = team
+          .where((item) => item["Product_Company_Name"]
+          .toString()
+          .toLowerCase()
+          .contains(query.toLowerCase()))
+          .toList();
+    });
+  }
+
   bool company=false;
   final companyheirarchy= CompanyHeirarchyViewModel();
 
@@ -634,7 +654,7 @@ class _company_analysisState extends State<company_analysis> {
 
   void initState() {
    // print("selectedmeasure:$selectedmeasures");
-    measure();
+
     showDateContainers = true;
     super.initState();
 
@@ -677,12 +697,7 @@ class _company_analysisState extends State<company_analysis> {
     }
   }
 
-  measure()
 
-  async {
-    //final measure=measure_repository();
-
-  }
   bool showDateContainers = false;
 
   GlobalKey<ScaffoldState> scaffoldKey1 = GlobalKey<ScaffoldState>();
@@ -730,7 +745,7 @@ class _company_analysisState extends State<company_analysis> {
                             child: Icon(Icons.calendar_today, color: Colors.white, size: 14),
                           ),
                           SizedBox(width: 3),
-                          Text(showDateContainers ? 'Dates off' : 'Dates On', style: TextStyle(fontSize: 14)),
+                          Text(showDateContainers ? 'Dates Show' : 'Dates Hide', style: TextStyle(fontSize: 14)),
                         ],
                       ),
                       value: 'date',
@@ -1271,7 +1286,7 @@ class _company_analysisState extends State<company_analysis> {
                           title: "Start Date",
                           range: "yyyy-MM-dd",
                           selectedDate: widget.startdate,
-                          isVisible: !showDateContainers  ,
+                          isVisible: !showDateContainers,
                           onDateSelected: (date) {
                             setState(() {
                               widget.startdate = date;
@@ -1303,10 +1318,59 @@ class _company_analysisState extends State<company_analysis> {
                   ),
            ),
            ),
+if(categorypopup=='')
+  Padding(
+    padding: const EdgeInsets.all(8.0),
+    child: Container(
+      decoration: BoxDecoration(
+        borderRadius: BorderRadius.circular(10.0),
+        border: Border.all(
+           color: Colors.green[800] ?? Colors.green, // Set border color here
+          width: 1.0, // Set border width here
+        ),
+      ),
+      child: Row(
+        children: [
+          Expanded(
+            child: TextField(
+              decoration: InputDecoration(
+                hintText: ' Search...',
+                border: InputBorder.none,
+              ),
+onChanged: (value)
+{
+  filterList(value);
+},
+            ),
+
+          ),
+          IconButton(
+            icon: Icon(Icons.search, color: Colors.green[800],),
+            onPressed: () {
+              // Implement your search logic here
+            },
+          ),
+        ],
+      ),
+    ),
+  ),
 
 
-
-            Expanded(
+          Padding(
+            padding: const EdgeInsets.all(8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Start Date: ${widget.startdate.toString().split(' ')[0]} ", style: TextStyle(color:  Colors.green[800],fontWeight: FontWeight.bold),), // Display only the date part
+                Text("End Date: ${widget.enddate.toString().split(' ')[0]}", style: TextStyle(color:  Colors.green[800],fontWeight: FontWeight.bold)), // Display only the date part
+              ],
+            ),
+          ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Divider(color: Colors.green[800],),
+                  )   ,
+          Expanded(
             child:
 
             Padding(
@@ -1316,16 +1380,13 @@ class _company_analysisState extends State<company_analysis> {
 
               ListView.builder(
 
-                  itemCount: team?.length ?? 0,
+                  itemCount: filterlist?.length ?? 0,
 
                   shrinkWrap: true,
 
                   itemBuilder: (context, index) {
                     print("team${team.length}");
-                    final filteredList = team.where((data) =>
-                    data['Sales_Inc_ST']!=null &&
-                        !ischeck).toList();
-                    team.sort((a, b) {
+                    filterlist.sort((a, b) {
                       String aSalesStr = a['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0';
                       String bSalesStr = b['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0';
 
@@ -1339,7 +1400,7 @@ class _company_analysisState extends State<company_analysis> {
 
 
 
-                    var item = team[index];
+                    var item = filterlist[index];
 
                     return
 
@@ -1426,14 +1487,14 @@ get_division(startDateFormatted,endDateFormatted, companyid.isEmpty ? [] :[compa
 
                                   Row(
                                     children: [
-                                      Circle_avater(index: filteredList.indexOf(team[index]) + 1),
+                                      Circle_avater(index: index + 1),
                                       SizedBox(width: 5,),
                                       Expanded(
                                           flex: 6,
-                                          child: Text(team[index]['Product_Company_Name'], style: TextStyle(color: Colors.green[800],fontSize: 15, fontWeight: FontWeight.bold),)),
+                                          child: Text(item['Product_Company_Name'], style: TextStyle(color: Colors.green[800],fontSize: 15, fontWeight: FontWeight.bold),)),
                                       Spacer(),
                                       Text(
-                                        NumberFormat('#,###').format(double.parse(team[index]['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0')),
+                                        NumberFormat('#,###').format(double.parse(item['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0')),
                                         style: TextStyle(
                                           color: Colors.red,
                                           fontSize: 17,
@@ -1687,10 +1748,10 @@ get_division(startDateFormatted,endDateFormatted, companyid.isEmpty ? [] :[compa
                                        SizedBox(width: 5,),
                                        Expanded(
                                            flex: 6,
-                                           child: Text(team[index]['Product_Company_Name'], style: TextStyle(color: Colors.green[800],fontSize: 15, fontWeight: FontWeight.bold),)),
+                                           child: Text(item['Product_Company_Name'], style: TextStyle(color: Colors.green[800],fontSize: 15, fontWeight: FontWeight.bold),)),
                                        Spacer(),
                                        Text(
-                                         NumberFormat('#,###').format(double.parse(team[index]['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0')),
+                                         NumberFormat('#,###').format(double.parse(item['Sales_Inc_ST']?.toString()?.replaceAll(',', '') ?? '0')),
                                          style: TextStyle(
                                            color: Colors.red,
                                            fontSize: 17,

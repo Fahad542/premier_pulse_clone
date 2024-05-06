@@ -62,8 +62,8 @@ class _DateContainerState extends State<DateContainer> {
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Container(
-            height: 80,
-            width: 170,
+            height: 60,
+            width: 150,
             padding: EdgeInsets.all(8),
             decoration: BoxDecoration(
               color:AppColors.greencolor,

@@ -44,8 +44,8 @@ class _DivisionState extends State<division> {
 
       setState(() {
         team = result;
-        showDateContainers=true;
-        company=true;
+       // showDateContainers=true;
+       // company=true;
         totalcompany = 0; // Reset total company sales
         for (int i = 0; i < team.length; i++) {
           totalcompany += team[i].sales;
@@ -256,10 +256,10 @@ class _DivisionState extends State<division> {
                                         Padding(
                                           padding: const EdgeInsets.only(left: 10,right: 10),
                                           child: Text(
-                                            "DIVISION WISE SALE",
+                                            "PSPL",
                                             style: TextStyle(
                                               color: Colors.white,
-                                              fontSize: 16,
+                                              fontSize: 24,
                                               fontWeight: FontWeight.bold,
                                             ),
                                             textAlign: TextAlign.center,
@@ -296,67 +296,35 @@ class _DivisionState extends State<division> {
 
 
                             SizedBox(height: 20,),
-                           Column(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(left: 15,right: 15),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        Text("Division Name", style: TextStyle(color: Colors.green[800],
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),),
-                                        Text("Sales Inc ST", style: TextStyle(color: Colors.red,
-                                            fontSize: 16,
-                                            fontWeight: FontWeight.bold),),
-
-                                      ],),
-                                  ),
-                                 // Divider(),
-                                  SizedBox(height: 8,),
-
-                                  ListView.builder(
-
-                                    shrinkWrap: true,
-
-                                    itemCount: team.length,
-                                    itemBuilder: (context, index) {
-                                      team.sort((a, b) {
-                                        String aSalesStr = a.sales?.toString()?.replaceAll(',', '') ?? '0';
-                                        String bSalesStr = b.sales?.toString()?.replaceAll(',', '') ?? '0';
-
-                                        double aSales = double.tryParse(aSalesStr) ?? 0;
-                                        double bSales = double.tryParse(bSalesStr) ?? 0;
-
-                                        return bSales.compareTo(aSales); // Sort in descending order
-                                      });
-                                      division_type_model item = team[index];
-
-                                      return InkWell(
-                                        onTap: (){
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                              builder: (context) => company_analysis(name: item.Product_Class_Name.toString(), startdate: startDate, enddate: endDate,
-
-                                              ),
-                                            ),
-                                          );
-                                        },
-                                        child: Reusable(
-                                          containerColor: divisions[index]["color"]!,
-                                          imagePath: divisions[index]["image"]!,
-                                          labelText: item.Product_Class_Name,
-                                          labelColor: Colors.black,
-                                          valueText: item.sales.toString(),
-                                          valueColor: Colors.black, text:   NumberFormat('#,###').format(double.tryParse(item.sales.toString().replaceAll(',', '')) ?? 0),
+                            Column(
+                              children: team.map((item) {
+                                return InkWell(
+                                  onTap: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => company_analysis(
+                                          name: item.Product_Class_Name.toString(),
+                                          startdate: startDate,
+                                          enddate: endDate,
                                         ),
-                                      );
+                                      ),
+                                    );
+                                  },
+                                  child: Reusable(
+                                    containerColor: divisions[team.indexOf(item)]["color"]!,
+                                    imagePath: divisions[team.indexOf(item)]["image"]!,
+                                    labelText: item.Product_Class_Name,
+                                    labelColor: Colors.black,
+                                    valueText: item.sales.toString(),
+                                    valueColor: Colors.black,
+                                    text: NumberFormat('#,###').format(double.tryParse(item.sales.toString().replaceAll(',', '')) ?? 0),
+                                  ),
+                                );
+                              }).toList(),
+                            ),
 
-                                    },
-                                  )
-                                ],
-                              ),
+
 
 
                             Visibility(

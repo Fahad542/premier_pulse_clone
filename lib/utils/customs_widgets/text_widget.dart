@@ -18,10 +18,11 @@ class ProductItem extends StatefulWidget {
   double? long;
   String? phone;
   String? code;
-   VoidCallback? onTap;
+  VoidCallback? onTap;
+  bool? empcheck;
 
 
-  ProductItem({required this.item, required this.selectedmeasures , required this.index, required this.name, this.code, this.lat, this.long, this.phone, this.check, this.checkdsf, this.onTap});
+  ProductItem({required this.item, this.empcheck,required this.selectedmeasures , required this.index, required this.name, this.code, this.lat, this.long, this.phone, this.check, this.checkdsf, this.onTap});
 
   @override
   State<ProductItem> createState() => _ProductItemState();
@@ -57,6 +58,7 @@ class _ProductItemState extends State<ProductItem> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
+                    if (widget.empcheck==true)
                     TextSpan(
                       text: " (${widget.item["${widget.code}"]})",
                       style: TextStyle(
@@ -190,7 +192,7 @@ class _ProductItemState extends State<ProductItem> {
                       borderRadius: BorderRadius.circular(10.0), // Add border radius here
                     ),
                     child: Text(
-                      "DSF Details",
+                      "DSF KPI",
                       style: TextStyle(color: Colors.white),
                     ),
                   ),

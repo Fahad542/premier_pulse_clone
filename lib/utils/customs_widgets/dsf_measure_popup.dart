@@ -50,7 +50,7 @@ class _DSFMeasurePopupState extends State<DSFMeasurePopup> {
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), ),
         child: AlertDialog(
-          title: Center( child: Text('DSF Details', style: TextStyle(color: Colors.green[800], fontWeight: FontWeight.bold, ))), // Set the text color to white
+          title: Center( child: Text('DSF KPI', style: TextStyle(color: Colors.green[800], fontWeight: FontWeight.bold, ))), // Set the text color to white
           backgroundColor: Colors.white,
 
           // Set the background color to green[800]

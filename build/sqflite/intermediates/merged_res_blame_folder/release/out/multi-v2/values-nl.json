@@ -1,7 +1,7 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Fahad\\premier_pulse\\build\\sqflite\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-nl\\values-nl.xml",
+            "outputFile": "E:\\Fahad\\premier_pulse_clone\\build\\sqflite\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-nl\\values-nl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Fahad Shafiq\\.gradle\\caches\\transforms-3\\68afc544509564f88915478be3590a43\\transformed\\core-1.6.0\\res\\values-nl\\values-nl.xml",
@@ -16,7 +16,7 @@
             ]
         },
         {
-            "outputFile": "E:\\Fahad\\premier_pulse\\build\\sqflite\\intermediates\\merged_res\\release\\values-nl\\values-nl.xml",
+            "outputFile": "E:\\Fahad\\premier_pulse_clone\\build\\sqflite\\intermediates\\merged_res\\release\\values-nl\\values-nl.xml",
             "map": [
                 {
                     "source": "C:\\Users\\Fahad Shafiq\\.gradle\\caches\\transforms-3\\68afc544509564f88915478be3590a43\\transformed\\core-1.6.0\\res\\values-nl\\values-nl.xml",

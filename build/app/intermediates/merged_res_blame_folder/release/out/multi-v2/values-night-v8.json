@@ -1,10 +1,10 @@
 {
     "logs": [
         {
-            "outputFile": "E:\\Fahad\\premier_pulse\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
+            "outputFile": "E:\\Fahad\\premier_pulse_clone\\build\\app\\intermediates\\incremental\\mergeReleaseResources\\merged.dir\\values-night-v8\\values-night-v8.xml",
             "map": [
                 {
-                    "source": "E:\\Fahad\\premier_pulse\\android\\app\\src\\main\\res\\values-night\\styles.xml",
+                    "source": "E:\\Fahad\\premier_pulse_clone\\android\\app\\src\\main\\res\\values-night\\styles.xml",
                     "from": {
                         "startLines": "3,14",
                         "startColumns": "4,4",

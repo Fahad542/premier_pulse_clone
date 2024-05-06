@@ -455,7 +455,7 @@ class _CustomerWiseState extends State<CustomerProductWise> {
             Padding(
               padding: const EdgeInsets.only(right: 10,left: 10),
               child:
-                ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:"",
+                ProductItem(   item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:"",
 
                 ),
 
@@ -467,7 +467,7 @@ class _CustomerWiseState extends State<CustomerProductWise> {
                   Padding(
                     padding: const EdgeInsets.only(right: 10,left: 10),
                     child:
-                    ProductItem(item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:"",
+                    ProductItem(  item: customerData, selectedmeasures: widget.selectedmeasures, index: index, name: 'Product_Product_Name',code:"",
 
                     ),
 
